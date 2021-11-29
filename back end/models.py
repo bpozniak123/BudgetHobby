@@ -1,0 +1,1 @@
+DATABASE = SqliteDatabase('hobbies.sqlite')
