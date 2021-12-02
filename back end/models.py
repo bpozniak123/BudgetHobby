@@ -1,5 +1,8 @@
+import os
+from playhouse.db_url import connect
 from peewee import *
-DATABASE = SqliteDatabase('hobbiesDB.sqlite')
+
+DATABASE = connect(os.environ.get('DATABASE_URL') or 'sqlite:///hobbiesDB.sqlite')
 
 class Hobby(Model):
 	hobby = CharField(unique = True)
