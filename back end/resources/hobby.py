@@ -13,3 +13,47 @@ def hobby_index():
 
 	print('APP WORKS')
 	print(result)
+
+	return jsonify(
+
+	)
+
+#----------------------------------
+#CREATE route
+@hobby.route('/', methods=['POST'])
+def new_hobby():
+
+	return jsonify(
+
+	)
+
+#----------------------------------
+#SHOW route
+@hobby.route('<id>', methods=['GET'])
+def show_hobby(id):
+	hobby = models.Hobby.get_by_id(id)
+	print(hobby)
+	
+	return jsonify(
+
+	)
+
+#----------------------------------
+#UPDATE route 
+@hobby.route('/<id>', methods=['PUT'])
+def update_hobby(id):
+
+
+	return jsonify(
+
+	)
+
+#----------------------------------
+#DELETE route
+@hobby.route('/<id>', methods=['DELETE'])
+def delete_hobby(id):
+
+
+	return jsonify(
+
+	)
