@@ -11,20 +11,16 @@ hobby = Blueprint('hobby', 'hobby') #1st is blueprint name, 2nd is it's import_n
 def hobby_index():
 	result = models.Hobby.select()
 
-	print('APP WORKS')
-	print(result)
-
-	return jsonify(
-
-	)
+	return jsonify(result)
 
 #----------------------------------
 #CREATE route
 @hobby.route('/', methods=['POST'])
 def new_hobby():
-
+	payload = request.get_json()
+	rtn = models.Hobby.create(payload)
 	return jsonify(
-
+		rtn
 	)
 
 #----------------------------------

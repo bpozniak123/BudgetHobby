@@ -19,6 +19,8 @@ DEBUG=True
 PORT=8000
 
 app = Flask(__name__)
+app.register_blueprint(hobby, url_prefix='/api/v1/hobby/')
+app.register_blueprint(budget, url_prefix='/api/v1/budget/')
 
 app.secret_key = os.environ.get("FLASK_APP_SECRET")
 print(os.environ.get("FLASK_APP_SECRET"))
@@ -36,7 +38,7 @@ print(os.environ.get("FLASK_APP_SECRET"))
 # second arg -- which origins are allowed
 # third arg -- lets us accept requests with cookies attached (so that we can
   # use sessions for auth)
-CORS(hobby, origins= ['http://localhost:3000'], support_credentials=True)
+CORS(app, origins= ['http://localhost:5000'], support_credentials=True)
 # CORS(users, origins=['http://localhost:3000'], support_credentials=True)
 
 @app.before_request # use this decorator to cause a function to run before reqs
@@ -61,5 +63,5 @@ if os.environ.get('FLASK_ENV') != 'development':
   models.initialize()
 
 if __name__ == '__main__':
-	models.initialize() 
+	models.initialize()
 	app.run(debug=DEBUG, port=PORT)

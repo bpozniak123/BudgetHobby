@@ -6,3 +6,8 @@ from playhouse.shortcuts import model_to_dict
 
 budget = Blueprint('budget', 'budget') #1st is blueprint name, 2nd is it's import_name
 
+#GET route 
+@budget.route('/')
+def budget_index():
+	return 'budget'
+		
