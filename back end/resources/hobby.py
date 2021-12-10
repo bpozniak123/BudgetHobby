@@ -18,9 +18,9 @@ def hobby_index():
 @hobby.route('/', methods=['POST'])
 def new_hobby():
 	payload = request.get_json()
-	rtn = models.Hobby.create(payload)
+	result = models.Hobby.create(payload)
 	return jsonify(
-		rtn
+		result
 	)
 
 #----------------------------------
@@ -38,8 +38,9 @@ def show_hobby(id):
 #UPDATE route 
 @hobby.route('/<id>', methods=['PUT'])
 def update_hobby(id):
-
-
+	payload = request.get_json()
+	models.Hobby.update(**payload).where(models.Hobby.id==id).execute()
+	
 	return jsonify(
 
 	)
